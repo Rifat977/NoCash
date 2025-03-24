@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Money - NoCash</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#1E40AF',
+                        accent: '#DBEAFE',
+                        dark: '#1E293B',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Mobile Navigation -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white shadow-lg z-10 md:hidden">
+        <div class="flex justify-around items-center py-3">
+            <a href="dashboard.html" class="flex flex-col items-center text-gray-500 hover:text-primary">
+                <i class="fas fa-home text-lg"></i>
+                <span class="text-xs mt-1">Home</span>
+            </a>
+            <a href="transactions.html" class="flex flex-col items-center text-gray-500 hover:text-primary">
+                <i class="fas fa-exchange-alt text-lg"></i>
+                <span class="text-xs mt-1">History</span>
+            </a>
+            <a href="send-money.html" class="flex flex-col items-center text-primary">
+                <i class="fas fa-paper-plane text-lg"></i>
+                <span class="text-xs mt-1">Send</span>
+            </a>
+            <a href="settings.html" class="flex flex-col items-center text-gray-500 hover:text-primary">
+                <i class="fas fa-cog text-lg"></i>
+                <span class="text-xs mt-1">Settings</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Desktop Sidebar -->
+    <div class="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
+        <div class="flex-1 flex flex-col min-h-0 bg-primary">
+            <div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
+                <div class="flex items-center flex-shrink-0 px-4">
+                    <h1 class="text-white text-2xl font-bold">NoCash</h1>
+                </div>
+                <nav class="mt-8 flex-1 px-2 space-y-2">
+                    <a href="dashboard.html" class="text-white hover:bg-blue-700 group flex items-center px-4 py-3 text-sm font-medium rounded-md">
+                        <i class="fas fa-home mr-3 text-lg"></i>
+                        Dashboard
+                    </a>
+                    <a href="transactions.html" class="text-white hover:bg-blue-700 group flex items-center px-4 py-3 text-sm font-medium rounded-md">
+                        <i class="fas fa-exchange-alt mr-3 text-lg"></i>
+                        Transaction History
+                    </a>
+                    <a href="send-money.html" class="bg-secondary text-white group flex items-center px-4 py-3 text-sm font-medium rounded-md">
+                        <i class="fas fa-paper-plane mr-3 text-lg"></i>
+                        Send Money
+                    </a>
+                    <a href="cash-in.html" class="text-white hover:bg-blue-700 group flex items-center px-4 py-3 text-sm font-medium rounded-md">
+                        <i class="fas fa-arrow-down mr-3 text-lg"></i>
+                        Cash In
+                    </a>
+                    <a href="cash-out.html" class="text-white hover:bg-blue-700 group flex items-center px-4 py-3 text-sm font-medium rounded-md">
+                        <i class="fas fa-arrow-up mr-3 text-lg"></i>
+                        Cash Out
+                    </a>
+                    <a href="settings.html" class="text-white hover:bg-blue-700 group flex items-center px-4 py-3 text-sm font-medium rounded-md">
+                        <i class="fas fa-cog mr-3 text-lg"></i>
+                        Settings
+                    </a>
+                </nav>
+            </div>
+            <div class="flex-shrink-0 flex border-t border-blue-700 p-4">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <div class="h-10 w-10 rounded-full bg-blue-300 flex items-center justify-center text-blue-700 font-bold">
+                            JD
+                        </div>
+                    </div>
+                    <div class="ml-3">
+                        <p class="text-sm font-medium text-white">John Doe</p>
+                        <a href="index.html" class="text-xs font-medium text-blue-200 hover:text-white">
+                            Sign Out
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="md:pl-64">
+        <!-- Top Header (Mobile & Desktop) -->
+        <div class="sticky top-0 z-10 bg-white md:hidden">
+            <div class="flex items-center justify-between h-16 px-4 border-b border-gray-200">
+                <h1 class="text-xl font-bold text-gray-800">Send Money</h1>
+                <div class="flex items-center">
+                    <div class="h-8 w-8 rounded-full bg-blue-500 flex items-center justify-center text-white">
+                        JD
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <main class="flex-1 pb-16 md:pb-0">
+            <div class="py-6 px-4 sm:px-6 lg:px-8">
+                <div class="md:flex md:items-center md:justify-between mb-6">
+                    <div class="flex-1 min-w-0">
+                        <h2 class="text-2xl font-bold leading-7 text-gray-800 sm:text-3xl sm:truncate">
+                            Send Money
+                        </h2>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden max-w-2xl mx-auto">
+                    <div class="p-6">
+                        <div class="mb-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-lg font-medium text-gray-900">Available Balance</h3>
+                                <span class="text-xl font-bold text-gray-900">$5,280.75</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-primary h-2.5 rounded-full" style="width: 70%"></div>
+                            </div>
+                        </div>
+
+                        <form>
+                            <div class="space-y-6">
+                                <!-- Recipient -->
+                                <div>
+                                    <label for="recipient" class="block text-sm font-medium text-gray-700 mb-1">Recipient</label>
+                                    <div class="relative rounded-md shadow-sm">
+                                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                            <i class="fas fa-user text-gray-400"></i>
+                                        </div>
+                                        <input type="text" id="recipient" class="focus:ring-primary focus:border-primary block w-full pl-10 sm:text-sm border-gray-300 rounded-md py-3 px-4 border" placeholder="Phone number or username">
+                                    </div>
+                                </div>
+
+                                <!-- Amount -->
+                                <div>
+                                    <label for="amount" class="block text-sm font-medium text-gray-700 mb-1">Amount</label>
+                                    <div class="relative rounded-md shadow-sm">
+                                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                            <span class="text-gray-500 sm:text-sm">$</span>
+                                        </div>
+                                        <input type="number" id="amount" class="focus:ring-primary focus:border-primary block w-full pl-10 sm:text-sm border-gray-300 rounded-md py-3 px-4 border" placeholder="0.00">
+                                    </div>
+                                </div>
+
+                                <!-- Purpose -->
+                                <div>
+                                    <label for="purpose" class="block text-sm font-medium text-gray-700 mb-1">Purpose (Optional)</label>
+                                    <div class="relative rounded-md shadow-sm">
+                                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                            <i class="fas fa-comment text-gray-400"></i>
+                                        </div>
+                                        <input type="text" id="purpose" class="focus:ring-primary focus:border-primary block w-full pl-10 sm:text-sm border-gray-300 rounded-md py-3 px-4 border" placeholder="What's this for?">
+                                    </div>
+                                </div>
+
+                                <!-- Recent Recipients -->
+                                <div>
+                                    <h4 class="text-sm font-medium text-gray-700 mb-3">Recent Recipients</h4>
+                                    <div class="flex space-x-4 overflow-x-auto pb-2">
+                                        <div class="flex flex-col items-center">
+                                            <div class="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-500 mb-1">
+                                                <span class="font-medium">SJ</span>
+                                            </div>
+                                            <span class="text-xs text-gray-600">Sarah</span>
+                                        </div>
+                                        <div class="flex flex-col items-center">
+                                            <div class="h-12 w-12 rounded-full bg-green-100 flex items-center justify-center text-green-500 mb-1">
+                                                <span class="font-medium">MB</span>
+                                            </div>
+                                            <span class="text-xs text-gray-600">Michael</span>
+                                        </div>
+                                        <div class="flex flex-col items-center">
+                                            <div class="h-12 w-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-500 mb-1">
+                                                <span class="font-medium">AW</span>
+                                            </div>
+                                            <span class="text-xs text-gray-600">Alex</span>
+                                        </div>
+                                        <div class="flex flex-col items-center">
+                                            <div class="h-12 w-12 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-500 mb-1">
+                                                <span class="font-medium">JT</span>
+                                            </div>
+                                            <span class="text-xs text-gray-600">Jessica</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Send Button -->
+                                <div>
+                                    <button type="button" class="w-full bg-primary hover:bg-secondary text-white font-medium py-3 px-4 rounded-lg transition duration-300">
+                                        Send Money
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
+
