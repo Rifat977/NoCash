@@ -1,0 +1,209 @@
+{{ define "title" }}CashIn{{ end }}
+
+{{ define "content" }}
+    <main class="flex-1 pb-16 md:pb-0">
+        <div class="py-6 px-4 sm:px-6 lg:px-8">
+            <div class="md:flex md:items-center md:justify-between mb-6">
+                <div class="flex-1 min-w-0">
+                    <h2 class="text-2xl font-bold leading-7 text-gray-800 sm:text-3xl sm:truncate">
+                        Cash In
+                    </h2>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden max-w-2xl mx-auto">
+                <div class="p-6">
+                    <div class="mb-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-medium text-gray-900">Current Balance</h3>
+                            <span class="text-xl font-bold text-gray-900">$5,280.75</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2.5">
+                            <div class="bg-primary h-2.5 rounded-full" style="width: 70%"></div>
+                        </div>
+                    </div>
+
+                    <form>
+                        <div class="space-y-6">
+                            <!-- Cash In Method -->
+                            <div>
+                                <label for="cashin-method" class="block text-sm font-medium text-gray-700 mb-1">Cash In Method</label>
+                                <select id="cashin-method" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                                    <option value="">Select a method</option>
+                                    <option value="card">Credit/Debit Card</option>
+                                    <option value="bank">Bank Transfer</option>
+                                    <option value="agent">Agent Point</option>
+                                </select>
+                            </div>
+
+                            <!-- Credit Card Details (conditionally shown) -->
+                            <div id="card-details" class="space-y-4">
+                                <div>
+                                    <label for="card-number" class="block text-sm font-medium text-gray-700 mb-1">Card Number</label>
+                                    <input type="text" id="card-number" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="XXXX XXXX XXXX XXXX">
+                                </div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="expiry-date" class="block text-sm font-medium text-gray-700 mb-1">Expiry Date</label>
+                                        <input type="text" id="expiry-date" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="MM/YY">
+                                    </div>
+                                    <div>
+                                        <label for="cvv" class="block text-sm font-medium text-gray-700 mb-1">CVV</label>
+                                        <input type="text" id="cvv" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="XXX">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="card-name" class="block text-sm font-medium text-gray-700 mb-1">Name on Card</label>
+                                    <input type="text" id="card-name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Enter name as shown on card">
+                                </div>
+                            </div>
+
+                            <!-- Bank Transfer Details (conditionally shown) -->
+                            <div id="bank-transfer-details" class="space-y-4 hidden">
+                                <div class="bg-blue-50 p-4 rounded-lg">
+                                    <h4 class="font-medium text-blue-800 mb-2">Bank Transfer Instructions</h4>
+                                    <p class="text-sm text-blue-700">
+                                        Transfer funds to the following account. Your PayEase account will be credited once the transfer is confirmed.
+                                    </p>
+                                    <div class="mt-3 space-y-2">
+                                        <div class="flex justify-between">
+                                            <span class="text-sm text-blue-800">Bank Name:</span>
+                                            <span class="text-sm font-medium text-blue-900">National Bank</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-sm text-blue-800">Account Name:</span>
+                                            <span class="text-sm font-medium text-blue-900">PayEase Financial Services</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-sm text-blue-800">Account Number:</span>
+                                            <span class="text-sm font-medium text-blue-900">1234567890</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-sm text-blue-800">Reference:</span>
+                                            <span class="text-sm font-medium text-blue-900">JD12345</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-600">
+                                        After making the transfer, please upload the receipt or enter the reference number below.
+                                    </p>
+                                </div>
+                                <div>
+                                    <label for="reference-number" class="block text-sm font-medium text-gray-700 mb-1">Reference Number</label>
+                                    <input type="text" id="reference-number" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Enter bank reference number">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Upload Receipt (Optional)</label>
+                                    <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                                        <div class="space-y-1 text-center">
+                                            <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                                                <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                            <div class="flex text-sm text-gray-600">
+                                                <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-primary hover:text-secondary focus-within:outline-none">
+                                                    <span>Upload a file</span>
+                                                    <input id="file-upload" name="file-upload" type="file" class="sr-only">
+                                                </label>
+                                                <p class="pl-1">or drag and drop</p>
+                                            </div>
+                                            <p class="text-xs text-gray-500">
+                                                PNG, JPG, PDF up to 10MB
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Agent Point (conditionally shown) -->
+                            <div id="agent-details" class="space-y-4 hidden">
+                                <div>
+                                    <label for="agent-location" class="block text-sm font-medium text-gray-700 mb-1">Agent Location</label>
+                                    <select id="agent-location" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                                        <option value="">Select location</option>
+                                        <option value="loc1">Downtown Branch</option>
+                                        <option value="loc2">Westside Mall</option>
+                                        <option value="loc3">North Avenue</option>
+                                        <option value="loc4">Central Plaza</option>
+                                    </select>
+                                </div>
+                                <div class="bg-yellow-50 p-4 rounded-lg">
+                                    <h4 class="font-medium text-yellow-800 mb-2">Agent Cash In Instructions</h4>
+                                    <p class="text-sm text-yellow-700">
+                                        Visit the selected agent location with your ID and cash. Show your unique code to the agent to complete the transaction.
+                                    </p>
+                                    <div class="mt-3 text-center">
+                                        <div class="bg-yellow-100 inline-block px-6 py-4 rounded-lg border-2 border-dashed border-yellow-300">
+                                            <span class="block text-2xl font-bold text-yellow-800 mb-1">JD12345</span>
+                                            <span class="text-sm text-yellow-700">Your unique agent code</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Amount -->
+                            <div>
+                                <label for="amount" class="block text-sm font-medium text-gray-700 mb-1">Amount</label>
+                                <div class="relative rounded-md shadow-sm">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <span class="text-gray-500 sm:text-sm">$</span>
+                                    </div>
+                                    <input type="number" id="amount" class="focus:ring-primary focus:border-primary block w-full pl-10 sm:text-sm border-gray-300 rounded-lg py-3 px-4 border" placeholder="0.00">
+                                </div>
+                            </div>
+
+                            <!-- Summary -->
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <h4 class="font-medium text-gray-900 mb-2">Transaction Summary</h4>
+                                <div class="space-y-2">
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600">Amount:</span>
+                                        <span class="font-medium">$0.00</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600">Fee:</span>
+                                        <span class="font-medium">$0.00</span>
+                                    </div>
+                                    <div class="border-t border-gray-200 my-2 pt-2 flex justify-between">
+                                        <span class="text-gray-800 font-medium">Total to be added:</span>
+                                        <span class="font-bold">$0.00</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Cash In Button -->
+                            <div>
+                                <button type="button" class="w-full bg-primary hover:bg-secondary text-white font-medium py-3 px-4 rounded-lg transition duration-300">
+                                    Proceed to Cash In
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Simple script to show/hide payment method details
+        document.getElementById('cashin-method').addEventListener('change', function() {
+            const cardDetails = document.getElementById('card-details');
+            const bankDetails = document.getElementById('bank-transfer-details');
+            const agentDetails = document.getElementById('agent-details');
+            
+            // Hide all first
+            cardDetails.classList.add('hidden');
+            bankDetails.classList.add('hidden');
+            agentDetails.classList.add('hidden');
+            
+            // Show selected method
+            if (this.value === 'card') {
+                cardDetails.classList.remove('hidden');
+            } else if (this.value === 'bank') {
+                bankDetails.classList.remove('hidden');
+            } else if (this.value === 'agent') {
+                agentDetails.classList.remove('hidden');
+            }
+        });
+    </script>
+{{ end }}

@@ -1,0 +1,151 @@
+{{ define "title" }}Settings{{ end }}
+
+{{ define "content" }}
+        <main class="flex-1 pb-16 md:pb-0">
+            <div class="py-6 px-4 sm:px-6 lg:px-8">
+                <div class="md:flex md:items-center md:justify-between mb-6">
+                    <div class="flex-1 min-w-0">
+                        <h2 class="text-2xl font-bold leading-7 text-gray-800 sm:text-3xl sm:truncate">
+                            Account Settings
+                        </h2>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden max-w-3xl mx-auto">
+                    <!-- Profile Section -->
+                    <div class="p-6 border-b border-gray-200">
+                        <h3 class="text-lg font-medium text-gray-900 mb-4">Profile Information</h3>
+                        <div class="flex items-center mb-6">
+                            <div class="h-20 w-20 rounded-full bg-blue-500 flex items-center justify-center text-white text-xl font-bold">
+                                JD
+                            </div>
+                            <div class="ml-4">
+                                <button class="px-4 py-2 bg-primary text-white text-sm font-medium rounded-md hover:bg-secondary transition duration-300">
+                                    Change Photo
+                                </button>
+                            </div>
+                        </div>
+                        <form>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="fullname" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                                    <input type="text" id="fullname" value="John Doe" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                                    <input type="email" id="email" value="john.doe@example.com" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                                </div>
+                                <div>
+                                    <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                                    <input type="tel" id="phone" value="+1 (555) 123-4567" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                                </div>
+                                <div>
+                                    <label for="dob" class="block text-sm font-medium text-gray-700 mb-1">Date of Birth</label>
+                                    <input type="date" id="dob" value="1990-05-15" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                                </div>
+                            </div>
+                            <div class="mt-6">
+                                <button type="button" class="px-6 py-2 bg-primary text-white font-medium rounded-md hover:bg-secondary transition duration-300">
+                                    Save Changes
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Security Section -->
+                    <div class="p-6 border-b border-gray-200">
+                        <h3 class="text-lg font-medium text-gray-900 mb-4">Security</h3>
+                        <form>
+                            <div class="space-y-6">
+                                <div>
+                                    <label for="current-password" class="block text-sm font-medium text-gray-700 mb-1">Current Password</label>
+                                    <input type="password" id="current-password" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                                </div>
+                                <div>
+                                    <label for="new-password" class="block text-sm font-medium text-gray-700 mb-1">New Password</label>
+                                    <input type="password" id="new-password" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                                </div>
+                                <div>
+                                    <label for="confirm-password" class="block text-sm font-medium text-gray-700 mb-1">Confirm New Password</label>
+                                    <input type="password" id="confirm-password" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                                </div>
+                                <div>
+                                    <button type="button" class="px-6 py-2 bg-primary text-white font-medium rounded-md hover:bg-secondary transition duration-300">
+                                        Update Password
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Notification Settings -->
+                    <div class="p-6 border-b border-gray-200">
+                        <h3 class="text-lg font-medium text-gray-900 mb-4">Notification Settings</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h4 class="text-sm font-medium text-gray-900">Transaction Alerts</h4>
+                                    <p class="text-sm text-gray-500">Receive notifications for all transactions</p>
+                                </div>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" checked class="sr-only peer">
+                                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                                </label>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h4 class="text-sm font-medium text-gray-900">Security Alerts</h4>
+                                    <p class="text-sm text-gray-500">Get notified about security updates and login attempts</p>
+                                </div>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" checked class="sr-only peer">
+                                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                                </label>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h4 class="text-sm font-medium text-gray-900">Marketing Communications</h4>
+                                    <p class="text-sm text-gray-500">Receive updates about new features and promotions</p>
+                                </div>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" class="sr-only peer">
+                                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Linked Accounts -->
+                    <div class="p-6">
+                        <h3 class="text-lg font-medium text-gray-900 mb-4">Linked Accounts</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <div class="h-10 w-10 flex items-center justify-center rounded-full bg-gray-100">
+                                        <i class="fab fa-google text-red-500 text-xl"></i>
+                                    </div>
+                                    <div class="ml-3">
+                                        <h4 class="text-sm font-medium text-gray-900">Google</h4>
+                                        <p class="text-sm text-gray-500">Connected</p>
+                                    </div>
+                                </div>
+                                <button class="text-sm text-red-600 hover:text-red-800">Disconnect</button>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <div class="h-10 w-10 flex items-center justify-center rounded-full bg-gray-100">
+                                        <i class="fab fa-facebook-f text-blue-600 text-xl"></i>
+                                    </div>
+                                    <div class="ml-3">
+                                        <h4 class="text-sm font-medium text-gray-900">Facebook</h4>
+                                        <p class="text-sm text-gray-500">Not connected</p>
+                                    </div>
+                                </div>
+                                <button class="text-sm text-primary hover:text-secondary">Connect</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+{{ end }}

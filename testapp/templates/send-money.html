@@ -1,0 +1,104 @@
+{{ define "title" }}Send Money{{ end }}
+
+{{ define "content" }}
+        <main class="flex-1 pb-16 md:pb-0">
+            <div class="py-6 px-4 sm:px-6 lg:px-8">
+                <div class="md:flex md:items-center md:justify-between mb-6">
+                    <div class="flex-1 min-w-0">
+                        <h2 class="text-2xl font-bold leading-7 text-gray-800 sm:text-3xl sm:truncate">
+                            Send Money
+                        </h2>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden max-w-2xl mx-auto">
+                    <div class="p-6">
+                        <div class="mb-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-lg font-medium text-gray-900">Available Balance</h3>
+                                <span class="text-xl font-bold text-gray-900">$5,280.75</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-primary h-2.5 rounded-full" style="width: 70%"></div>
+                            </div>
+                        </div>
+
+                        <form>
+                            <div class="space-y-6">
+                                <!-- Recipient -->
+                                <div>
+                                    <label for="recipient" class="block text-sm font-medium text-gray-700 mb-1">Recipient</label>
+                                    <div class="relative rounded-md shadow-sm">
+                                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                            <i class="fas fa-user text-gray-400"></i>
+                                        </div>
+                                        <input type="text" id="recipient" class="focus:ring-primary focus:border-primary block w-full pl-10 sm:text-sm border-gray-300 rounded-md py-3 px-4 border" placeholder="Phone number or username">
+                                    </div>
+                                </div>
+
+                                <!-- Amount -->
+                                <div>
+                                    <label for="amount" class="block text-sm font-medium text-gray-700 mb-1">Amount</label>
+                                    <div class="relative rounded-md shadow-sm">
+                                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                            <span class="text-gray-500 sm:text-sm">$</span>
+                                        </div>
+                                        <input type="number" id="amount" class="focus:ring-primary focus:border-primary block w-full pl-10 sm:text-sm border-gray-300 rounded-md py-3 px-4 border" placeholder="0.00">
+                                    </div>
+                                </div>
+
+                                <!-- Purpose -->
+                                <div>
+                                    <label for="purpose" class="block text-sm font-medium text-gray-700 mb-1">Purpose (Optional)</label>
+                                    <div class="relative rounded-md shadow-sm">
+                                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                            <i class="fas fa-comment text-gray-400"></i>
+                                        </div>
+                                        <input type="text" id="purpose" class="focus:ring-primary focus:border-primary block w-full pl-10 sm:text-sm border-gray-300 rounded-md py-3 px-4 border" placeholder="What's this for?">
+                                    </div>
+                                </div>
+
+                                <!-- Recent Recipients -->
+                                <div>
+                                    <h4 class="text-sm font-medium text-gray-700 mb-3">Recent Recipients</h4>
+                                    <div class="flex space-x-4 overflow-x-auto pb-2">
+                                        <div class="flex flex-col items-center">
+                                            <div class="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-500 mb-1">
+                                                <span class="font-medium">SJ</span>
+                                            </div>
+                                            <span class="text-xs text-gray-600">Sarah</span>
+                                        </div>
+                                        <div class="flex flex-col items-center">
+                                            <div class="h-12 w-12 rounded-full bg-green-100 flex items-center justify-center text-green-500 mb-1">
+                                                <span class="font-medium">MB</span>
+                                            </div>
+                                            <span class="text-xs text-gray-600">Michael</span>
+                                        </div>
+                                        <div class="flex flex-col items-center">
+                                            <div class="h-12 w-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-500 mb-1">
+                                                <span class="font-medium">AW</span>
+                                            </div>
+                                            <span class="text-xs text-gray-600">Alex</span>
+                                        </div>
+                                        <div class="flex flex-col items-center">
+                                            <div class="h-12 w-12 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-500 mb-1">
+                                                <span class="font-medium">JT</span>
+                                            </div>
+                                            <span class="text-xs text-gray-600">Jessica</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Send Button -->
+                                <div>
+                                    <button type="button" class="w-full bg-primary hover:bg-secondary text-white font-medium py-3 px-4 rounded-lg transition duration-300">
+                                        Send Money
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+{{ end }}

@@ -1,0 +1,204 @@
+{{ define "title" }}Transaction History{{ end }}
+
+{{ define "content" }}
+        <main class="flex-1 pb-16 md:pb-0">
+            <div class="py-6 px-4 sm:px-6 lg:px-8">
+                <div class="md:flex md:items-center md:justify-between mb-6">
+                    <div class="flex-1 min-w-0">
+                        <h2 class="text-2xl font-bold leading-7 text-gray-800 sm:text-3xl sm:truncate">
+                            Transaction History
+                        </h2>
+                    </div>
+                </div>
+
+                <!-- Filter Options -->
+                <div class="bg-white p-4 rounded-lg shadow mb-6">
+                    <div class="flex flex-col md:flex-row md:items-center md:space-x-4">
+                        <div class="mb-4 md:mb-0 flex-1">
+                            <label for="transaction-type" class="block text-sm font-medium text-gray-700 mb-1">Transaction Type</label>
+                            <select id="transaction-type" class="w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50 py-2 px-3 border">
+                                <option value="all">All Transactions</option>
+                                <option value="send">Send Money</option>
+                                <option value="receive">Receive Money</option>
+                                <option value="cash-in">Cash In</option>
+                                <option value="cash-out">Cash Out</option>
+                            </select>
+                        </div>
+                        <div class="mb-4 md:mb-0 flex-1">
+                            <label for="date-range" class="block text-sm font-medium text-gray-700 mb-1">Date Range</label>
+                            <select id="date-range" class="w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50 py-2 px-3 border">
+                                <option value="all">All Time</option>
+                                <option value="today">Today</option>
+                                <option value="week">This Week</option>
+                                <option value="month">This Month</option>
+                                <option value="custom">Custom Range</option>
+                            </select>
+                        </div>
+                        <div class="flex-1">
+                            <label for="search" class="block text-sm font-medium text-gray-700 mb-1">Search</label>
+                            <div class="relative rounded-md shadow-sm">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <i class="fas fa-search text-gray-400"></i>
+                                </div>
+                                <input type="text" id="search" class="focus:ring-primary focus:border-primary block w-full pl-10 sm:text-sm border-gray-300 rounded-md py-2 px-3 border" placeholder="Search transactions...">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Transactions List -->
+                <div class="bg-white rounded-lg shadow overflow-hidden">
+                    <div class="divide-y divide-gray-200">
+                        <!-- Transaction Item -->
+                        <div class="p-4 hover:bg-gray-50">
+                            <div class="flex items-center space-x-4">
+                                <div class="flex-shrink-0">
+                                    <div class="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center text-green-500">
+                                        <i class="fas fa-arrow-down"></i>
+                                    </div>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-sm font-medium text-gray-900">Cash In</p>
+                                    <p class="text-sm text-gray-500">Mar 20, 2023 - 10:30 AM</p>
+                                    <p class="text-xs text-gray-500 mt-1">Transaction ID: #TRX78945612</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-sm font-semibold text-green-600">+$250.00</p>
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 mt-1">
+                                        Completed
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Transaction Item -->
+                        <div class="p-4 hover:bg-gray-50">
+                            <div class="flex items-center space-x-4">
+                                <div class="flex-shrink-0">
+                                    <div class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-500">
+                                        <i class="fas fa-paper-plane"></i>
+                                    </div>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-sm font-medium text-gray-900">To: Sarah Johnson</p>
+                                    <p class="text-sm text-gray-500">Mar 19, 2023 - 2:15 PM</p>
+                                    <p class="text-xs text-gray-500 mt-1">Transaction ID: #TRX78945611</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-sm font-semibold text-red-600">-$75.50</p>
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 mt-1">
+                                        Completed
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Transaction Item -->
+                        <div class="p-4 hover:bg-gray-50">
+                            <div class="flex items-center space-x-4">
+                                <div class="flex-shrink-0">
+                                    <div class="h-10 w-10 rounded-full bg-red-100 flex items-center justify-center text-red-500">
+                                        <i class="fas fa-arrow-up"></i>
+                                    </div>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-sm font-medium text-gray-900">Cash Out</p>
+                                    <p class="text-sm text-gray-500">Mar 15, 2023 - 4:30 PM</p>
+                                    <p class="text-xs text-gray-500 mt-1">Transaction ID: #TRX78945610</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-sm font-semibold text-red-600">-$120.00</p>
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 mt-1">
+                                        Completed
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Transaction Item -->
+                        <div class="p-4 hover:bg-gray-50">
+                            <div class="flex items-center space-x-4">
+                                <div class="flex-shrink-0">
+                                    <div class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-500">
+                                        <i class="fas fa-paper-plane"></i>
+                                    </div>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-sm font-medium text-gray-900">From: Michael Brown</p>
+                                    <p class="text-sm text-gray-500">Mar 12, 2023 - 11:45 AM</p>
+                                    <p class="text-xs text-gray-500 mt-1">Transaction ID: #TRX78945609</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-sm font-semibold text-green-600">+$350.00</p>
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 mt-1">
+                                        Completed
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Transaction Item -->
+                        <div class="p-4 hover:bg-gray-50">
+                            <div class="flex items-center space-x-4">
+                                <div class="flex-shrink-0">
+                                    <div class="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center text-green-500">
+                                        <i class="fas fa-arrow-down"></i>
+                                    </div>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-sm font-medium text-gray-900">Cash In</p>
+                                    <p class="text-sm text-gray-500">Mar 10, 2023 - 9:20 AM</p>
+                                    <p class="text-xs text-gray-500 mt-1">Transaction ID: #TRX78945608</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-sm font-semibold text-green-600">+$500.00</p>
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 mt-1">
+                                        Completed
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
+                        <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+                            <div>
+                                <p class="text-sm text-gray-700">
+                                    Showing <span class="font-medium">1</span> to <span class="font-medium">5</span> of <span class="font-medium">24</span> results
+                                </p>
+                            </div>
+                            <div>
+                                <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+                                    <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                        <span class="sr-only">Previous</span>
+                                        <i class="fas fa-chevron-left"></i>
+                                    </a>
+                                    <a href="#" aria-current="page" class="z-10 bg-primary border-primary text-white relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                                        1
+                                    </a>
+                                    <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                                        2
+                                    </a>
+                                    <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                                        3
+                                    </a>
+                                    <span class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700">
+                                        ...
+                                    </span>
+                                    <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                                        5
+                                    </a>
+                                    <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                        <span class="sr-only">Next</span>
+                                        <i class="fas fa-chevron-right"></i>
+                                    </a>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+{{ end }}
+

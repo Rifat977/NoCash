@@ -1,0 +1,28 @@
+root = "."
+tmp_dir = "tmp"
+
+[build]
+# Modified build command to use full path
+cmd = "go build -o tmp/main testapp/main.go"
+
+bin = "tmp/main"
+include_ext = ["go", "html", "toml", "env"]
+exclude_dir = ["assets", "tmp", "vendor", "node_modules"]
+delay = 1000
+stop_on_error = true
+AIR_DEBUG=true
+
+[log]
+time = false  # Disable timestamps
+color = false # Disable colors
+level = "error"  # Only show errors, suppress info/debug logs
+
+
+[color]
+main = "magenta"
+watcher = "cyan"
+build = "yellow"
+runner = "green"
+
+[misc]
+clean_on_exit = true
