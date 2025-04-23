@@ -39,6 +39,46 @@ func LoginHandler(c *context.Context) {
 	}
 	if c.Request.Method == "GET" {
 		render.RenderTemplate(c.Response, nil, "testapp/templates/login.html")
+	} else if c.Request.Method == "POST" {
+		email := c.Request.FormValue("email")
+		password := c.Request.FormValue("password")
+		if email == "" || password == "" {
+			http.Error(c.Response, "Email and password are required", http.StatusBadRequest)
+			return
+		}
+		var user models.User
+		if err := db.GetDB().Where("email = ?", email).First(&user).Error; err != nil {
+			http.Error(c.Response, "Invalid email or password", http.StatusUnauthorized)
+			return
+		}
+		checkPassword := model.CheckPasswordHash(password, user.Password)
+		if !checkPassword {
+			http.Error(c.Response, "Invalid email or password", http.StatusUnauthorized)
+			return
+		}
+
+		token, err := generateSessionToken()
+		if err != nil {
+			http.Error(c.Response, "Failed to generate session token", http.StatusInternalServerError)
+			return
+		}
+		session := models.Session{
+			UserID: user.ID,
+			Token:  token,
+			Expiry: 0,
+		}
+		if err := db.GetDB().Create(&session).Error; err != nil {
+			http.Error(c.Response, "Failed to create session", http.StatusInternalServerError)
+			return
+		}
+		http.SetCookie(c.Response, &http.Cookie{
+			Name:  "session_token",
+			Value: token,
+			Path:  "/",
+		})
+
+		http.Redirect(c.Response, c.Request, "/dashboard", http.StatusSeeOther)
+
 	}
 }
 

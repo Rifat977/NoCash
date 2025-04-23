@@ -8,6 +8,7 @@ import (
 
 func RegisterRoutes(application *app.App) {
 	application.Router.Add("GET", "/", handler.LoginHandler)
+	application.Router.Add("POST", "/", handler.LoginHandler)
 
 	application.Router.Add("GET", "/register", handler.RegisterHandler)
 	application.Router.Add("POST", "/register", handler.RegisterHandler)
